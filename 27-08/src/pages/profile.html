@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <section class="sec-form">
+        <form id="formCadastro">
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome" required placeholder="Ex: Vitor Reis"><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required placeholder="Ex: vitor@mail.com"><br><br>
+
+        <label for="senha">Senha:</label><br>
+        <input type="password" id="senha" name="senha" required placeholder="Ex: Senha123@"><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+    <p><a href="login.html">Acesse o seu login</a></p>
+    <p id="mensagem"></p>
+    <button type="button" onclick="atualizar()" id="btnAtualizar" style="margin-bottom: 10px; background-color: yellow; color: black;">Atualizar</button>
+    <button type="button" onclick="deletar()" id="btnDeletar" style="background-color: red;">Deletar</button>
+    </section>
+    
+    <script src="../js/profile.js"></script>
+</body>
+</html>
