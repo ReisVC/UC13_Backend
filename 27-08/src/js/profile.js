@@ -36,7 +36,48 @@ async function carregarPerfil() {
   }
 
 async function atualizar() {
-    document.getElementById("btnAtualizar");
+    const name = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("senha").value.trim();
+    const token = localStorage.token
+
+    try {
+
+      const body = {}
+      if(!name == "") { body.name = name}
+      if(!email == "") { body.email = email}
+      if(!password == "") { body.password = password}
+
+      // Faz a requisição para o endpoint de login
+      const resposta = await fetch("http://localhost:3000/users/me", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token // envia token
+        },
+        body: JSON.stringify(body)
+      });
+  
+      if (!resposta.ok) {
+        const erro = await resposta.text();
+        throw new Error(erro);
+      }
+  
+      // Converte a resposta em JSON
+      const dados = await resposta.json();
+
+      // O token retornado pelo servido
+      // Exibe mensagem de sucesso
+
+
+      document.getElementById("mensagem").textContent = "Perfil atualizado com sucesso!";
+      document.getElementById("mensagem").style.color = "green";
+  
+    } catch (erro) {
+      console.error("Erro:", erro);
+      document.getElementById("mensagem").textContent = "Erro: " + erro.message;
+      document.getElementById("mensagem").style.color = "red";
+    }
 }
 
 async function deletar() {
