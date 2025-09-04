@@ -68,9 +68,9 @@ export class UserService {
         if (!user) throw new Error('Usuário não encontrado')
 
         // Se data contém a senha, definimos explicitamente no usuário para que o hashPassword seja chamado
-        // if (data.password) {
-        //     user.password = data.password
-        // }
+        if (data.password) {
+            user.password = data.password
+        }
 
         // Copia apenas as outras propriedades existentes em data para user, sem alterar a senha novamente
         const { password, ...rest } = data

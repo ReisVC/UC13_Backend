@@ -1,3 +1,19 @@
+function escreverTexto(texto, elementoId, velocidade = 50) {
+  const elemento = document.getElementById(elementoId);
+  let i = 0;
+
+  elemento.textContent = ""; // limpa antes de escrever
+
+  const intervalo = setInterval(() => {
+    if (i < texto.length) {
+      elemento.textContent += texto.charAt(i);
+      i++;
+    } else {
+      clearInterval(intervalo);
+    }
+  }, velocidade);
+}
+
 // Seleciona o formulário de login
 document.getElementById("formCadastro").addEventListener("submit", async function(event) {
     event.preventDefault(); // Impede o recarregamento da página
@@ -31,9 +47,11 @@ document.getElementById("formCadastro").addEventListener("submit", async functio
       localStorage.setItem("token", token);
 
       // Exibe mensagem de sucesso
-      document.getElementById("mensagem").textContent = "Login realizado com sucesso!";
       document.getElementById("mensagem").style.color = "green";
-      window.location.href = "profile.html"
+      escreverTexto("Login realizado com sucesso! Redirecionando...", "mensagem", 40);
+
+      setTimeout(() => {
+      window.location.href = "profile.html"}, 2000);
   
     } catch (erro) {
       console.error("Erro:", erro);
