@@ -7,11 +7,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(172, 255, 172);
+    background: #abd8ff;
+    background: linear-gradient(90deg, rgba(171, 216, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+
+
 }
 
 .sec-form {
-    margin-top: 20vh ;
+    margin-top: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,4 +69,3 @@ p:hover {
 p {
     margin-top: 20px;
 }
-

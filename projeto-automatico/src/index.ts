@@ -30,7 +30,7 @@ function createTsProject(): void {
 
     // Instala dependências de runtime
     execSync(
-        "npm install express cors dotenv bcrypt jsonwebtoken typeorm reflect-metadata",
+        "npm install express cors dotenv bcrypt jsonwebtoken typeorm reflect-metadata class-validator class-transformer",
         { stdio: "inherit" }
     );
 
@@ -73,7 +73,7 @@ function createTsProject(): void {
     fs.writeFileSync("package.json", JSON.stringify(packageJson, null, 2));
 
     // Passo 8: Criar estrutura de pastas e arquivos iniciais MVC
-    const srcFolders = ["models", "controllers", "middlewares", "routes", "services", "utils"];
+    const srcFolders = ["models", "controllers", "middlewares", "routes", "services", "utils", "dtos"];
     fs.mkdirSync("src");
     srcFolders.forEach(folder => fs.mkdirSync(`src/${folder}`));
 
@@ -81,6 +81,7 @@ function createTsProject(): void {
     fs.writeFileSync("src/app.ts", "");
     fs.writeFileSync("src/data-source.ts", "");
     fs.writeFileSync("src/server.ts", "");
+
 
     // Passo 10: Criar um arquivo inicial no src
     fs.writeFileSync("src/index.ts", `console.log("Projeto ${projectName} rodando!");`);
