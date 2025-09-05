@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { UserController } from '../controllers/UserController'
 import { authMiddleware } from '../middlewares/authMiddleware';
+import { validateDTO } from '../middlewares/validateDTO';
 
 const router = Router()
 const controller = new UserController()
@@ -10,7 +11,7 @@ router.get('/', controller.list.bind(controller));
 
 // PROFILE do usuário logado
 // Lê as infos
-router.get('/me', authMiddleware ,controller.getById.bind(controller))
+router.get('/me', authMiddleware,controller.getById.bind(controller))
 // Atualiza as infos
 router.put('/me', authMiddleware, controller.update.bind(controller))
 // Remove
